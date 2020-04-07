@@ -5,4 +5,4 @@
   npm install @angular/cli
 
 # create a new angular project
-  ng new <project name>
+  ng new <project-name>
