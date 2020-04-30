@@ -1,0 +1,7 @@
+
+<div>
+Text - <input type="text" value="Text here " [(ngModel)]="textInput" />
+<button (click)="onClickMe(textInput)" formtarget="_blank">Click</button>
+<app-second-comp [textInput]="selectedText"></app-second-comp> 
+
+</div>
