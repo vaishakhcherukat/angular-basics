@@ -50,7 +50,7 @@ export class ContactComponent implements OnInit {
   }
 
   createForm() {
-    this.fb.group({
+    this.feedbackForm =this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       telnum: ['', [Validators.required, Validators.pattern] ],
@@ -59,6 +59,10 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+    this.feedbackForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged();
   }
   onSubmit() {
     
@@ -73,11 +77,8 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    this.feedbackFormDirective.resetForm();
-    this.feedbackForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-
-    this.onValueChanged();
+  this.feedbackFormDirective.resetForm();
+    
   }
   onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }
